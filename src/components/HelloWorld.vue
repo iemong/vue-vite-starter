@@ -6,8 +6,8 @@
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
     +
     <a
-      href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
-      target="_blank"
+        href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
+        target="_blank"
     >
       Vetur
     </a>
@@ -28,27 +28,18 @@
   </p>
 
   <button @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <p>double: {{ double }}</p>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue'
-export default defineComponent({
-  name: 'HelloWorld',
-  props: {
-    msg: {
-      type: String,
-      required: true
-    }
-  },
-  setup: () => {
-    const count = ref(0)
-    return { count }
-  }
+<script lang="ts" setup>
+import {ref, computed, defineProps} from 'vue'
+
+const props = defineProps({
+  msg: String,
 })
+
+const count = ref(0)
+const double = computed(() => count.value * 2)
 </script>
 
 <style scoped>
